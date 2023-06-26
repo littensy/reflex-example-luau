@@ -1,0 +1,19 @@
+[package]
+name = "richerd/reflex-example-luau"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[place]
+shared-packages = "game.ReplicatedStorage.Packages"
+
+[dependencies]
+Reflex = "littensy/reflex@3.1.2"
+Promise = "evaera/promise@4.0.0"
+Net = "vorlias/net@3.0.6"
+Sift = "csqrl/sift@0.0.6"
+t = "osyrisrblx/t@3.0.0"
+TestEZ = "roblox/testez@0.4.1"
+
+[server-dependencies]
+Lapis = "nezuo/lapis@0.2.1"
