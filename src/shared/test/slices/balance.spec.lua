@@ -1,37 +1,32 @@
 return function()
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local ServerScriptService = game:GetService("ServerScriptService")
 
-	local template = require(ServerScriptService.Server.data.template)
-	local balance = require(ReplicatedStorage.Shared.slices.players.balance)
+	local players = require(ReplicatedStorage.Shared.slices.players)
 
 	beforeEach(function()
-		balance.loadPlayerData("__temp", template)
+		players.balance.loadPlayerData("__temp", players.template)
 	end)
 
 	afterEach(function()
-		balance.closePlayerData("__temp")
+		players.balance.closePlayerData("__temp")
 	end)
 
-	it("should load default data", function()
-		local data = balance:getState(function(state)
-			return state.__temp
-		end)
+	local function selectBalance(state: players.BalanceState)
+		return state.__temp
+	end
 
-		expect(data).to.be.a("table")
-		expect(data.coins).to.equal(template.balance.coins)
-		expect(data.gems).to.equal(template.balance.gems)
+	it("should load default data", function()
+		local balance = players.balance:getState(selectBalance)
+		expect(balance).to.be.a("table")
+		expect(balance.coins).to.equal(players.template.balance.coins)
+		expect(balance.gems).to.equal(players.template.balance.gems)
 	end)
 
 	it("should update the balance", function()
-		balance.updateBalance("__temp", "coins", 100)
-
-		local data = balance:getState(function(state)
-			return state.__temp
-		end)
-
-		expect(data).to.be.a("table")
-		expect(data.coins).to.equal(template.balance.coins + 100)
-		expect(data.gems).to.equal(template.balance.gems)
+		players.balance.updateBalance("__temp", "coins", 100)
+		local balance = players.balance:getState(selectBalance)
+		expect(balance).to.be.a("table")
+		expect(balance.coins).to.equal(players.template.balance.coins + 100)
+		expect(balance.gems).to.equal(players.template.balance.gems)
 	end)
 end

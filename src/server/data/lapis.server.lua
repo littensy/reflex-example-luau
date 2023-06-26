@@ -4,19 +4,19 @@ local Players = game:GetService("Players")
 
 local Lapis = require(ServerScriptService.Packages.Lapis)
 local Promise = require(ReplicatedStorage.Packages.Promise)
+local players = require(ReplicatedStorage.Shared.slices.players)
 local selectors = require(ReplicatedStorage.Shared.selectors)
 local store = require(ServerScriptService.Server.store)
 local validate = require(script.Parent.validate)
-local template = require(script.Parent.template)
 
 local collection: any = Lapis.createCollection("data-v1", {
-	defaultData = template :: any,
+	defaultData = players.template :: any,
 	validate = validate,
 	migrations = {},
 })
 
 local function loadDefaultData(player: Player)
-	store.loadPlayerData(player.Name, template)
+	store.loadPlayerData(player.Name, players.template)
 
 	return Promise.fromEvent(Players.PlayerRemoving, function(playerLeft: Player)
 		return player == playerLeft

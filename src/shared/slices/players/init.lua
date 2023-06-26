@@ -1,6 +1,7 @@
 local balance = require(script.balance)
 local inventory = require(script.inventory)
 local types = require(script.types)
+local utils = require(script.utils)
 
 export type PlayerData = types.PlayerData
 export type PlayerBalance = types.PlayerBalance
@@ -16,4 +17,5 @@ return {
 	balance = balance,
 	inventory = inventory,
 	types = types,
+	template = utils.template,
 }
