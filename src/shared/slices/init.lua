@@ -1,13 +1,14 @@
 local players = require(script.players)
+local counter = require(script.counter)
 
 export type SharedState = {
-	balance: players.BalanceState,
-	inventory: players.InventoryState,
+	players: players.PlayersState,
+	counter: counter.CounterState,
 }
 
-export type SharedActions = players.BalanceActions & players.InventoryActions
+export type SharedActions = players.PlayersActions & counter.CounterActions
 
 return {
-	balance = players.balance,
-	inventory = players.inventory,
+	players = players.playersSlice,
+	counter = counter.counterSlice,
 }

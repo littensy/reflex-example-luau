@@ -20,7 +20,7 @@ export type InventoryActions = {
 
 local initialState: InventoryState = {}
 
-return Reflex.createProducer(initialState, {
+local inventorySlice: InventoryProducer = Reflex.createProducer(initialState, {
 	loadPlayerData = function(state, id: string, data: types.PlayerData)
 		return Sift.Dictionary.set(state, id, data.inventory)
 	end,
@@ -56,4 +56,8 @@ return Reflex.createProducer(initialState, {
 			)
 		end)
 	end,
-}) :: InventoryProducer
+})
+
+return {
+	inventorySlice = inventorySlice,
+}

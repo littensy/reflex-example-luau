@@ -18,7 +18,7 @@ export type BalanceActions = {
 
 local initialState: BalanceState = {}
 
-return Reflex.createProducer(initialState, {
+local balanceSlice: BalanceProducer = Reflex.createProducer(initialState, {
 	loadPlayerData = function(state, id: string, data: types.PlayerData)
 		return Sift.Dictionary.set(state, id, data.balance)
 	end,
@@ -32,4 +32,8 @@ return Reflex.createProducer(initialState, {
 			return Sift.Dictionary.set(balance, balanceType, balance[balanceType] + amount)
 		end)
 	end,
-}) :: BalanceProducer
+})
+
+return {
+	balanceSlice = balanceSlice,
+}

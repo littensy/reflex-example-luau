@@ -6,13 +6,13 @@ local players = require(ReplicatedStorage.Shared.slices.players)
 
 local function selectPlayerBalance(playerId: string)
 	return function(state: slices.SharedState)
-		return state.balance[playerId]
+		return state.players.balance[playerId]
 	end
 end
 
 local function selectPlayerInventory(playerId: string)
 	return function(state: slices.SharedState)
-		return state.inventory[playerId]
+		return state.players.inventory[playerId]
 	end
 end
 
