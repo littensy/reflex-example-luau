@@ -9,7 +9,7 @@ return function()
 	end)
 
 	afterEach(function()
-		balanceSlice.closePlayerData("__test__")
+		balanceSlice:resetState()
 	end)
 
 	local function getBalance()
