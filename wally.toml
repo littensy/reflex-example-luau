@@ -8,7 +8,7 @@ realm = "shared"
 shared-packages = "game.ReplicatedStorage.Packages"
 
 [dependencies]
-Reflex = "littensy/reflex@3.1.2"
+Reflex = "littensy/reflex@3.2.1"
 Promise = "evaera/promise@4.0.0"
 Net = "vorlias/net@3.0.6"
 Sift = "csqrl/sift@0.0.6"

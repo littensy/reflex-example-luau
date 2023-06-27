@@ -14,7 +14,7 @@ dependencies = []
 
 [[package]]
 name = "littensy/reflex"
-version = "3.1.2"
+version = "3.2.1"
 dependencies = [["Promise", "evaera/promise@4.0.0"]]
 
 [[package]]
@@ -30,7 +30,7 @@ dependencies = []
 [[package]]
 name = "richerd/reflex-example-luau"
 version = "0.1.0"
-dependencies = [["Net", "vorlias/net@3.0.6"], ["Promise", "evaera/promise@4.0.0"], ["Reflex", "littensy/reflex@3.1.2"], ["Sift", "csqrl/sift@0.0.6"], ["TestEZ", "roblox/testez@0.4.1"], ["t", "osyrisrblx/t@3.0.0"], ["Lapis", "nezuo/lapis@0.2.1"]]
+dependencies = [["Net", "vorlias/net@3.0.6"], ["Promise", "evaera/promise@4.0.0"], ["Reflex", "littensy/reflex@3.2.1"], ["Sift", "csqrl/sift@0.0.6"], ["TestEZ", "roblox/testez@0.4.1"], ["t", "osyrisrblx/t@3.0.0"], ["Lapis", "nezuo/lapis@0.2.1"]]
 
 [[package]]
 name = "roblox/testez"
