@@ -20,7 +20,7 @@ local function selectPlayerData(playerId: string)
 	return Reflex.createSelector(
 		selectPlayerBalance(playerId),
 		selectPlayerInventory(playerId),
-		function(balance, inventory): players.PlayerData?
+		function(balance: players.PlayerBalance?, inventory: players.PlayerInventory?): players.PlayerData?
 			if not balance or not inventory then
 				return
 			end
