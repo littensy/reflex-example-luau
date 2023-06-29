@@ -1,4 +1,7 @@
-local players = require(script.players)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
--- In the future, use 'Sift.Dictionary.merge' to export all the selectors
-return players
+local Sift = require(ReplicatedStorage.Packages.Sift)
+local players = require(script.players)
+local counter = require(script.counter)
+
+return Sift.Dictionary.merge(players, counter) :: typeof(players) & typeof(counter)
