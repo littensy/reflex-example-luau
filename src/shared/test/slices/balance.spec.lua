@@ -13,7 +13,7 @@ return function()
 	end)
 
 	local function getBalance()
-		return balanceSlice:getState().__test__
+		return balanceSlice:getState().__test__ :: players.PlayerBalance
 	end
 
 	it("should load default data", function()

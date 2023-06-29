@@ -13,7 +13,7 @@ return function()
 	end)
 
 	local function getInventory()
-		return inventorySlice:getState().__test__
+		return inventorySlice:getState().__test__ :: players.PlayerInventory
 	end
 
 	it("should load default data", function()

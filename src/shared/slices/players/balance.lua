@@ -7,7 +7,7 @@ local types = require(script.Parent.types)
 type BalanceProducer = Reflex.Producer<BalanceState, BalanceActions>
 
 export type BalanceState = {
-	[string]: types.PlayerBalance,
+	[string]: types.PlayerBalance?,
 }
 
 export type BalanceActions = {
@@ -28,7 +28,11 @@ local balanceSlice: BalanceProducer = Reflex.createProducer(initialState, {
 	end,
 
 	updateBalance = function(state, id: string, balanceType: types.PlayerBalanceType, amount: number)
-		return Sift.Dictionary.update(state, id, function(balance: types.PlayerBalance)
+		return Sift.Dictionary.update(state, id, function(balance: types.PlayerBalance?): types.PlayerBalance?
+			if not balance then
+				return
+			end
+
 			return Sift.Dictionary.set(balance, balanceType, balance[balanceType] + amount)
 		end)
 	end,

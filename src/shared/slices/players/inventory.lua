@@ -7,7 +7,7 @@ local types = require(script.Parent.types)
 type InventoryProducer = Reflex.Producer<InventoryState, InventoryActions>
 
 export type InventoryState = {
-	[string]: types.PlayerInventory,
+	[string]: types.PlayerInventory?,
 }
 
 export type InventoryActions = {
@@ -30,7 +30,11 @@ local inventorySlice: InventoryProducer = Reflex.createProducer(initialState, {
 	end,
 
 	addPet = function(state, id: string, petId: string)
-		return Sift.Dictionary.update(state, id, function(inventory: types.PlayerInventory)
+		return Sift.Dictionary.update(state, id, function(inventory: types.PlayerInventory?): types.PlayerInventory?
+			if not inventory then
+				return
+			end
+
 			return Sift.Dictionary.set(
 				inventory,
 				"pets",
@@ -40,13 +44,21 @@ local inventorySlice: InventoryProducer = Reflex.createProducer(initialState, {
 	end,
 
 	removePet = function(state, id: string, petId: string)
-		return Sift.Dictionary.update(state, id, function(inventory: types.PlayerInventory)
+		return Sift.Dictionary.update(state, id, function(inventory: types.PlayerInventory?): types.PlayerInventory?
+			if not inventory then
+				return
+			end
+
 			return Sift.Dictionary.set(inventory, "pets", Sift.Dictionary.removeKey(inventory.pets, petId))
 		end)
 	end,
 
 	togglePetEquipped = function(state, id: string, petId: string)
-		return Sift.Dictionary.update(state, id, function(inventory: types.PlayerInventory)
+		return Sift.Dictionary.update(state, id, function(inventory: types.PlayerInventory?): types.PlayerInventory?
+			if not inventory then
+				return
+			end
+
 			return Sift.Dictionary.set(
 				inventory,
 				"pets",
